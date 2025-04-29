@@ -1,7 +1,6 @@
 name: 'Default environment variables'
 
-on:
-  push:
+on:  workflow_dispatch
 
 jobs:
   mainjob:
