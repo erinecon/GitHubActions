@@ -1,0 +1,33 @@
+name: 'Create release notes'
+
+on:
+  workflow_dispatch:
+  
+env:
+  CHANGELOG: changelog.md
+  TEMPLATE: release-notes-template.md
+  MONTH: May
+  YEAR: 2025
+  
+
+jobs: 
+  job1:
+    name: 'Check changelog'
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          # Check changelog for the month/year in question
+          # Check if there are major, minor, or dep items
+          # If none, then skip job2
+          # Else, move onto job2
+  
+  
+  job2:
+    name: 'Create release notes'
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: |
+          echo "Creating the release notes"
+          
