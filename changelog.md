@@ -14,6 +14,7 @@ Each revision is versioned by the date of the revision.
 
 - fix(minor): Use a supported plugin version.
 - docs: update the docs.
+- build(minor): Update plugin version.
 
 ### 2025-05-10
 
@@ -23,6 +24,7 @@ Each revision is versioned by the date of the revision.
 - Add changelog for tracking user-relevant changes.
 
 ### 2025-04-29
+
 - feat(major): Feature just outside of the month.
 - fix(minor): Fix just outside of the month.
 - remove(deprecated): Removed just outside of the month.
