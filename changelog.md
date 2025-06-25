@@ -19,10 +19,10 @@ Each revision is versioned by the date of the revision.
 
 - feat(major): Added a different feature.
 - fix(minor): Bug fixes.
-- remove(dep): Removed support for plugin.
+- remove(deprecated): Removed support for plugin.
 - Add changelog for tracking user-relevant changes.
 
 ### 2025-04-29
 - feat(major): Feature just outside of the month.
 - fix(minor): Fix just outside of the month.
-- remove(dep): Removed just outside of the month.
+- remove(deprecated): Removed just outside of the month.
