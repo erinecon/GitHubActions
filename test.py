@@ -1,4 +1,5 @@
 import datefinder
+import datetime
 
 class ChangelogEntry:
 
@@ -11,8 +12,8 @@ class ChangelogEntry:
 def substring_after(s, delim):
     return s.partition(delim)[2]
 
-month = "5"
-year = "2025"
+month = 4
+year = 2025
 major_item_tag = "major"
 minor_item_tag = "minor"
 dep_item_tag = "deprecated"
@@ -58,7 +59,7 @@ deprecated_items = []
 # loop over the entries
 for entry in entries:
     # check whether the date is appropriate
-    if str(entry.month) == month and str(entry.year) == year:
+    if entry.month == month and entry.year == year:
         # check all the items and see if they have the right tags
         for item in entry.items:
             # items with right tags fill in details of the template
@@ -78,6 +79,14 @@ release_notes_file_name = "release-notes-" + str(year) + "-" + str(month) + ".md
 with open("docs/"+release_notes_file_name, 'w') as outFile:
     with open("release-notes-template.md") as releaseNotesFile:
         for line in releaseNotesFile:
+            # check for title
+            if "MONTH YEAR" in line.strip():
+                # if title, then need to update for correct month and year
+                month_text = datetime.date(1900, month, 1).strftime('%B') 
+                line_modified = line.replace("MONTH", month_text)
+                line_modified = line_modified.replace("YEAR", str(year))
+                outFile.write(line_modified)
+                continue
             outFile.write(line)
             if "What's new" in line.strip():
                 # write all the major items under this section

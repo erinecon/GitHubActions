@@ -1,4 +1,4 @@
-# <charm name> May 2025 release notes
+# <charm name> MONTH YEAR release notes
 
 These release notes cover new features and changes in <charm name>.
 
