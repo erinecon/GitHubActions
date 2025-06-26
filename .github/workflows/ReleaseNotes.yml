@@ -1,0 +1,26 @@
+name: 'Create release notes'
+
+on:
+  workflow_dispatch:
+  # TODO: update to monthly
+  
+env:
+  CHANGELOG: changelog.md
+  TEMPLATE: release-notes-template.md
+  MONTH: 5 # TODO: update to current month
+  YEAR: 2025 # TODO: update to current year
+  
+
+jobs: 
+  job1:
+    name: 'Create release notes'
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - run: |
+          python3 generate-release-notes.py $MONTH $YEAR
+  
+  
+          
