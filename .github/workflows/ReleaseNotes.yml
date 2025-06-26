@@ -23,6 +23,7 @@ jobs:
         with:
           python-version: '3.13' 
       - run: |
+          pip install datetime
           python3 generate-release-notes.py $MONTH $YEAR
   
   
