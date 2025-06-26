@@ -24,6 +24,7 @@ jobs:
           python-version: '3.13' 
       - run: |
           pip install datetime
+          pip install datefinder
           python3 generate-release-notes.py $MONTH $YEAR
   
   
