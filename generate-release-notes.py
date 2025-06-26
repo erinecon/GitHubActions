@@ -28,7 +28,7 @@ year = int(sys.argv[2])
 major_item_tag = "major"
 minor_item_tag = "minor"
 dep_item_tag = "deprecated"
-changelogname = "/Users/econley/GitHubActions/changelog.md"
+changelogname = "changelog.md"
 
 # first get the line numbers we care about
 line_numbers_of_all_entries = []
