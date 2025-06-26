@@ -13,7 +13,7 @@ env:
 
 jobs: 
   job1:
-    name: 'Create release notes'
+    name: 'Prepare'
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +22,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13' 
-      - run: |
+      - name: install-python-packages
+        run: |
           pip install datetime
           pip install datefinder
-          python3 generate-release-notes.py $MONTH $YEAR
-  
+      - name: generate-release-notes
+        run: |
+          python3 generate-release-notes.py $MONTH $YEAR 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: release-notes.md
+          retention-days: 1
   
           

@@ -86,8 +86,13 @@ for entry in entries:
 
 # then need to use the template 
 # create a new file
-release_notes_file_name = "release-notes-" + str(year) + "-" + str(month) + ".md"
-with open("docs/"+release_notes_file_name, 'w') as outFile:
+
+
+# release_notes_file_name = "release-notes-" + str(year) + "-" + str(month) + ".md"
+# with open("docs/"+release_notes_file_name, 'w') as outFile:
+
+release_notes_file_name = "release-notes.md"
+with open(release_notes_file_name, 'w') as outFile:
     with open("release-notes-template.md") as releaseNotesFile:
         for line in releaseNotesFile:
             # check for title
