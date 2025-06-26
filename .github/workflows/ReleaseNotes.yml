@@ -13,7 +13,7 @@ env:
 
 jobs: 
   job1:
-    name: 'Prepare'
+    name: 'Generate release notes'
     runs-on: ubuntu-latest
 
     steps:
@@ -22,17 +22,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13' 
-      - name: install-python-packages
+      - name: Install Python packages
         run: |
           pip install datetime
           pip install datefinder
-      - name: generate-release-notes
+      - name: Generate release notes
         run: |
           python3 generate-release-notes.py $MONTH $YEAR 
-      - uses: actions/upload-artifact@v4
+          git add release-notes.md
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
         with:
-          name: release-notes
-          path: release-notes.md
-          retention-days: 1
+          token: ${{ secrets.PAT }}
+          commit-message: add release notes
+          title: Add release notes for $MONTH $YEAR
+          body: Add release notes to reflect release changes
+          branch: add-release-notes
+          base: main
+
   
           
