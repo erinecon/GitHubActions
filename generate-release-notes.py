@@ -1,5 +1,15 @@
+'''generate-release-notes.py
+
+Generate release notes using a template.
+
+Usage: python3 generate-release-notes.py MONTH YEAR
+MONTH (int): Month of release notes
+YEAR (int): Year of release notes
+'''
+
 import datefinder
 import datetime
+import sys
 
 class ChangelogEntry:
 
@@ -12,8 +22,9 @@ class ChangelogEntry:
 def substring_after(s, delim):
     return s.partition(delim)[2]
 
-month = 4
-year = 2025
+month = int(sys.argv[1])
+year = int(sys.argv[2])
+
 major_item_tag = "major"
 minor_item_tag = "minor"
 dep_item_tag = "deprecated"
