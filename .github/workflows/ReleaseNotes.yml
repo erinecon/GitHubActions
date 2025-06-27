@@ -35,7 +35,7 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           commit-message: add release notes
-          title: Add release notes for $MONTH $YEAR
+          title: Add release notes for ${{ env.MONTH }} ${{ env.YEAR }}
           body: Add release notes to reflect release changes
           branch: add-release-notes
           base: main
