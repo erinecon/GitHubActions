@@ -2,6 +2,8 @@
 
 These release notes cover new features and changes in <charm name>.
 
+<Add a paragraph summarizing the most significant changes in the charm.>
+
 See our [Release policy and schedule](link-to-landing-page).
 
 ## Requirements and compatibility
