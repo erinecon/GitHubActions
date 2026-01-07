@@ -67,13 +67,12 @@ backends:
       instance_name=$(multipass list --format csv | grep $SPREAD_SYSTEM_ADDRESS | cut -f1 -d\,)
       multipass delete --purge "${instance_name}"
     systems:
-      - ubuntu-24.04:
+      - ubuntu-24.04-64:
           username: spread
           password: spread
           workers: 1
   github-ci:
     type: adhoc
-
     allocate: |
       echo "Allocating ad-hoc $SPREAD_SYSTEM"
       if [ -z "${GITHUB_RUN_ID:-}" ]; then
@@ -85,7 +84,7 @@ backends:
     discard: |
       echo "Discarding ad-hoc $SPREAD_SYSTEM"
     systems:
-      - ubuntu-24.04:
+      - ubuntu-24.04-64:
           username: ubuntu
           password: ubuntu
           workers: 1
