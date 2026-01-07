@@ -5,8 +5,11 @@ name: 'validate Spread test'
 on: workflow_dispatch
 
 jobs:
-  spread-test-validation:
+  run-spread-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        spread_job: ['github-ci:ubuntu-22.04:charm/src-docs/tutorial/code/']
     steps: 
     - name: Checkout repo
       uses: actions/checkout@v5
@@ -22,6 +25,8 @@ jobs:
     - name: Install multipass
       run: |
         sudo snap install multipass
-    - name: Run Spread
-      run: spread
-
+    - name: Run tests
+      run: |
+        sudo adduser --gecos "" --disabled-password ubuntu
+        echo "ubuntu:ubuntu" | sudo chpasswd
+        spread ${{ matrix.spread_job }}
