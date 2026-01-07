@@ -19,6 +19,9 @@ jobs:
     - name: Install spread
       run: |
         go install github.com/snapcore/spread/cmd/spread@latest
+    - name: Install multipass
+      run: |
+        sudo snap install multipass
     - name: Run Spread
       run: spread
 
