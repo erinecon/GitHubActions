@@ -1,0 +1,17 @@
+# This is a workflow to validate the auto-generated task.yaml file
+
+name: 'validate Spread test'
+
+on: workflow_dispatch
+
+jobs:
+  spread-test-validation:
+    runs-on: [Linux]
+    steps: 
+    - name: Checkout repo
+      uses: actions/checkout@v5
+      with:
+        fetch-depth: 0
+    - name: Run Spread
+      run: spread
+
