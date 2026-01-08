@@ -90,6 +90,13 @@ backends:
           workers: 1
 
 prepare: |
+  snap refresh --hold
+
+  if systemctl is-enabled unattended-upgrades.service; then
+    systemctl stop unattended-upgrades.service
+    systemctl mask unattended-upgrades.service
+  fi
+
   sudo snap install --classic concierge
   sudo concierge prepare -p microk8s
 
