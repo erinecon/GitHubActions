@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        spread_job: ['github-ci:ubuntu-22.04:tests/spread/tutorial']
+        spread_job: ['github-ci:ubuntu-24.04-64:tests/spread/tutorial']
     steps: 
     - name: Checkout repo
       uses: actions/checkout@v5
@@ -24,4 +24,6 @@ jobs:
         go install github.com/snapcore/spread/cmd/spread@latest
     - name: Run tests
       run: |
+        sudo adduser --gecos "" --disabled-password ubuntu
+        echo "ubuntu:ubuntu" | sudo chpasswd
         spread ${{ matrix.spread_job }}
