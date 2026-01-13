@@ -11,5 +11,5 @@ execute: |
   juju wait-for application mysql-k8s --query='status=="active"' --timeout 10m
   juju run wordpress-k8s/0 get-initial-password
   juju status --format json
-  #UNIT_IP=$(juju status --format json | jq -r '.applications."wordpress-k8s".units."wordpress-k8s/0"."public-address"')
-  #curl http://$UNIT_IP/wp-login.php
+  UNIT_IP=$(juju status --format json | jq -r '.applications."wordpress-k8s".units."wordpress-k8s/0"."public-address"')
+  curl http://$UNIT_IP/wp-login.php
